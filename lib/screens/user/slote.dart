@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class SlotScreen extends StatelessWidget {
+  const SlotScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +10,7 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
         elevation: 1,
-        title: Text('Car Parking Area'),
+        title: const Text('Car Parking Area'),
       ),
       body: SafeArea(
           child: GridView.builder(

@@ -23,7 +23,7 @@ class _MyRegisterState extends State<MyRegister> {
         backgroundColor: Colors.transparent,
         body: Stack(children: [
           Container(
-            padding: const EdgeInsets.only(left: 35, top: 80),
+            padding: const EdgeInsets.only(left: 35, top: 10),
             child: const Text(
               "Create\nAccount",
               style: TextStyle(color: Colors.white, fontSize: 33),
@@ -34,7 +34,7 @@ class _MyRegisterState extends State<MyRegister> {
               padding: EdgeInsets.only(
                   right: 35,
                   left: 35,
-                  top: MediaQuery.of(context).size.height * 0.27),
+                  top: MediaQuery.of(context).size.height * 0.12),
               child: Column(children: [
                 TextField(
                   decoration: InputDecoration(
@@ -47,6 +47,40 @@ class _MyRegisterState extends State<MyRegister> {
                       borderSide: const BorderSide(color: Colors.white),
                     ),
                     hintText: 'Name',
+                    hintStyle: const TextStyle(color: Colors.white),
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                TextField(
+                  decoration: InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(color: Colors.black),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(color: Colors.white),
+                    ),
+                    hintText: 'Phone',
+                    hintStyle: const TextStyle(color: Colors.white),
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                TextField(
+                  decoration: InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(color: Colors.black),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(color: Colors.white),
+                    ),
+                    hintText: 'Vehicle number',
                     hintStyle: const TextStyle(color: Colors.white),
                   ),
                 ),

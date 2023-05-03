@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class MyLogin extends StatefulWidget {
-  const MyLogin({Key? key}) : super(key: key);
+class AdminLogin extends StatefulWidget {
+  const AdminLogin({Key? key}) : super(key: key);
 
   @override
-  _MyLoginState createState() => _MyLoginState();
+  _AdminLoginState createState() => _AdminLoginState();
 }
 
-class _MyLoginState extends State<MyLogin> {
+class _AdminLoginState extends State<AdminLogin> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,10 +22,10 @@ class _MyLoginState extends State<MyLogin> {
             padding: EdgeInsets.only(
                 left: 35, top: MediaQuery.of(context).size.height * 0.19),
             child: const Text(
-              "Welcome\nBack",
+              "Admin / Security\nLogin ",
               style: TextStyle(
                   color: Colors.white,
-                  fontSize: 33,
+                  fontSize: 30,
                   fontWeight: FontWeight.bold),
             ),
           ),
@@ -64,10 +64,10 @@ class _MyLoginState extends State<MyLogin> {
                   alignment: Alignment.centerLeft,
                   child: TextButton(
                     onPressed: () {
-                      Navigator.of(context).pushNamed('AdminLogin');
+                      Navigator.of(context).pop();
                     },
                     child: const Text(
-                      'Admin/Security Login',
+                      'User Login',
                       style: TextStyle(
                         fontSize: 16,
                         color: Color(0xff4c505b),
@@ -79,23 +79,15 @@ class _MyLoginState extends State<MyLogin> {
                   height: 30,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    const Text(
-                      'Sign In',
-                      style: TextStyle(
-                        color: Color(0xff4c505b),
-                        fontSize: 27,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
                     CircleAvatar(
                       radius: 30,
                       backgroundColor: const Color(0xff4c505b),
                       child: IconButton(
                         color: Colors.white,
                         onPressed: () {
-                          Navigator.pushNamed(context, 'home');
+                          Navigator.pushNamed(context, 'AdminHome');
                         },
                         icon: const Icon(Icons.arrow_forward),
                       ),
@@ -105,34 +97,6 @@ class _MyLoginState extends State<MyLogin> {
                 const SizedBox(
                   height: 30,
                 ),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, 'register');
-                        },
-                        child: const Text(
-                          'Sign Up',
-                          style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            fontSize: 18,
-                            color: Color(0xff4c505b),
-                          ),
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: () {},
-                        child: const Text(
-                          'Forgot Password',
-                          style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            fontSize: 18,
-                            color: Color(0xff4c505b),
-                          ),
-                        ),
-                      ),
-                    ]),
               ]),
             ),
           ),
