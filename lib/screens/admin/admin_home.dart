@@ -1,3 +1,4 @@
+import 'package:carparking/services/firebase_login.dart';
 import 'package:flutter/material.dart';
 
 class AdminHome extends StatelessWidget {
@@ -69,7 +70,9 @@ class AdminHome extends StatelessWidget {
                 ),
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  Auth.signOut(context);
+                },
                 child: Container(
                   margin: const EdgeInsets.all(10),
                   decoration: BoxDecoration(

@@ -1,3 +1,4 @@
+import 'package:carparking/services/firebase_login.dart';
 import 'package:flutter/material.dart';
 
 class AdminLogin extends StatefulWidget {
@@ -8,6 +9,9 @@ class AdminLogin extends StatefulWidget {
 }
 
 class _AdminLoginState extends State<AdminLogin> {
+  final emailC = TextEditingController();
+  final passwordC = TextEditingController();
+  final key2 = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,74 +34,96 @@ class _AdminLoginState extends State<AdminLogin> {
             ),
           ),
           SingleChildScrollView(
-            child: Container(
-              padding: EdgeInsets.only(
-                  right: 35,
-                  left: 35,
-                  top: MediaQuery.of(context).size.height * 0.5),
-              child: Column(children: [
-                TextField(
-                  decoration: InputDecoration(
-                    fillColor: Colors.grey.shade100,
-                    filled: true,
-                    hintText: 'Email',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
+            child: Form(
+              key: key2,
+              child: Container(
+                padding: EdgeInsets.only(
+                    right: 35,
+                    left: 35,
+                    top: MediaQuery.of(context).size.height * 0.5),
+                child: Column(children: [
+                  TextFormField(
+                    controller: emailC,
+                    decoration: InputDecoration(
+                      fillColor: Colors.grey.shade100,
+                      filled: true,
+                      hintText: 'Email',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                     ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    fillColor: Colors.grey.shade100,
-                    filled: true,
-                    hintText: 'Password',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter email';
+                      }
+                      return null;
                     },
-                    child: const Text(
-                      'User Login',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Color(0xff4c505b),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  TextFormField(
+                    controller: passwordC,
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      fillColor: Colors.grey.shade100,
+                      filled: true,
+                      hintText: 'Password',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter password';
+                      }
+                      return null;
+                    },
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text(
+                        'User Login',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Color(0xff4c505b),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    CircleAvatar(
-                      radius: 30,
-                      backgroundColor: const Color(0xff4c505b),
-                      child: IconButton(
-                        color: Colors.white,
-                        onPressed: () {
-                          Navigator.pushNamed(context, 'AdminHome');
-                        },
-                        icon: const Icon(Icons.arrow_forward),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      CircleAvatar(
+                        radius: 30,
+                        backgroundColor: const Color(0xff4c505b),
+                        child: IconButton(
+                          color: Colors.white,
+                          onPressed: () {
+                            if (key2.currentState!.validate()) {
+                              Auth.signIn(
+                                  email: emailC.text,
+                                  password: passwordC.text,
+                                  context: context);
+                            }
+                          },
+                          icon: const Icon(Icons.arrow_forward),
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-              ]),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                ]),
+              ),
             ),
           ),
         ]),
