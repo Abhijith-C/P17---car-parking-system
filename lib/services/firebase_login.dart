@@ -83,7 +83,7 @@ class Auth {
       if (userData?.type == 1) {
         //admin
 
-        Navigator.pushNamed(context, 'AdminLogin');
+        Navigator.pushNamed(context, 'AdminHome');
       } else if (userData?.type == 2) {
         // normal user
         if (userData?.status == 2) {

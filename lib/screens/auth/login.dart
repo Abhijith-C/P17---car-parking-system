@@ -88,7 +88,7 @@ class _MyLoginState extends State<MyLogin> {
                         Navigator.of(context).pushNamed('AdminLogin');
                       },
                       child: const Text(
-                        'Admin/Security Login',
+                        'Security Login',
                         style: TextStyle(
                           fontSize: 16,
                           color: Color(0xff4c505b),
